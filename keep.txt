@@ -1,0 +1,75 @@
+General
+{
+  "status": "success", // or "error", "auth_error", "validation_error", etc.
+  "code": 200, // HTTP status code
+  "message": "Operation completed successfully.", // Descriptive message
+  "data": null, // Placeholder for response data (optional)
+  "error": null, // Placeholder for error details (optional)
+  "requestId": "unique-request-id" // Unique ID for each request for tracking (optional but recommended)
+}
+
+------------
+success
+{
+  "status": "success",
+  "code": 200,
+  "message": "Data retrieved successfully.",
+  "data": {
+    // Any data to be returned to the client
+  },
+  "requestId": "abcd1234"
+}
+
+-------------
+success response with specific Operation
+
+{
+  "status": "success",
+  "code": 200,
+  "message": "Item deleted successfully.",
+  "data": {
+    "deletedItemId": "12345"
+  },
+  "requestId": "abcd1234"
+}
+
+-------------------------
+error
+{
+  "status": "error",
+  "code": 500,
+  "message": "Internal server error.",
+  "error": {
+    "type": "ServerError",
+    "details": "Database connection failed."
+  },
+  "requestId": "abcd1234"
+}
+--------------------
+Authentication error
+{
+  "status": "auth_error",
+  "code": 401,
+  "message": "Authentication failed. Please check your credentials.",
+  "error": {
+    "type": "AuthError",
+    "details": "Invalid token or expired session."
+  },
+  "requestId": "abcd1234"
+}
+--------------------
+validation error
+{
+  "status": "validation_error",
+  "code": 400,
+  "message": "Validation error: Missing required fields.",
+  "error": {
+    "type": "ValidationError",
+    "details": {
+      "username": "Username is required.",
+      "email": "Email format is invalid."
+    }
+  },
+  "requestId": "abcd1234"
+}
+----------------------
